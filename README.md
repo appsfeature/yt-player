@@ -4,10 +4,10 @@ The Android YTPlayer library is a stable and customizable open source YouTube pl
 
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/appsfeature/YTPlayer/master/screenshots/sample1.png" alt="Preview 1" width="200" /> 
-  <img src="https://raw.githubusercontent.com/appsfeature/YTPlayer/master/screenshots/sample2.png" alt="Preview 2" width="200" /> 
-  <img src="https://raw.githubusercontent.com/appsfeature/YTPlayer/master/screenshots/sample3.png" alt="Preview 3" width="200" />
-  <img src="https://raw.githubusercontent.com/appsfeature/YTPlayer/master/screenshots/sample5.PNG" alt="Preview 4" width="200" />
+  <img src="https://raw.githubusercontent.com/appsfeature/yt-player/master/screenshots/sample1.png" alt="Preview 1" width="200" /> 
+  <img src="https://raw.githubusercontent.com/appsfeature/yt-player/master/screenshots/sample2.png" alt="Preview 2" width="200" /> 
+  <img src="https://raw.githubusercontent.com/appsfeature/yt-player/master/screenshots/sample3.png" alt="Preview 3" width="200" />
+  <img src="https://raw.githubusercontent.com/appsfeature/yt-player/master/screenshots/sample5.PNG" alt="Preview 4" width="200" />
 </p>
   
 ## Setup Project
@@ -23,6 +23,10 @@ allprojects {
         jcenter() 
         maven { url 'https://jitpack.io' } 
     }
+
+    ext {
+        appcompat = '1.1.0-alpha01'
+    }
 }
 ```
 
@@ -30,11 +34,11 @@ Add this to your project build.gradle
 
 Module-level build.gradle (<module>/build.gradle): 
 
-#### [![](https://jitpack.io/v/appsfeature/YTPlayer.svg)](https://jitpack.io/#appsfeature/YTPlayer)
+#### [![](https://jitpack.io/v/appsfeature/yt-player.svg)](https://jitpack.io/#appsfeature/yt-player)
 ```gradle  
 
 dependencies {
-    implementation 'com.github.appsfeature:YTPlayer:x.y'
+    implementation 'com.github.appsfeature:yt-player:x.y'
 } 
 ```
 
