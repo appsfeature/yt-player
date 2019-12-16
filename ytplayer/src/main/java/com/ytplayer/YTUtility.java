@@ -17,6 +17,7 @@ import com.ytplayer.activity.search.YTSearchActivity;
 import com.ytplayer.activity.single.YTPlayerActivity;
 import com.ytplayer.activity.single.YTSlidingActivity;
 import com.ytplayer.adapter.YTVideoModel;
+import com.ytplayer.util.Logger;
 import com.ytplayer.util.YTConstant;
 
 import java.text.DateFormat;
@@ -55,64 +56,122 @@ public class YTUtility {
     }
 
     public static void openExternalYoutubeVideoPlayer(Activity activity, String googleApiKey, String youtubeVideoId) {
-        activity.startActivity(YouTubeStandalonePlayer.createVideoIntent(activity, googleApiKey, youtubeVideoId, 0, true, false));
+        try {
+            activity.startActivity(YouTubeStandalonePlayer.createVideoIntent(activity, googleApiKey, youtubeVideoId, 0, true, false));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+        }
     }
 
     public static void openExternalYoutubePlaylistPlayer(Activity activity, String googleApiKey, String playlistId) {
-        activity.startActivity(YouTubeStandalonePlayer.createPlaylistIntent(activity, googleApiKey, playlistId, 0, 0, true, true));
-
+        try {
+            activity.startActivity(YouTubeStandalonePlayer.createPlaylistIntent(activity, googleApiKey, playlistId, 0, 0, true, true));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+        }
     }
 
-    public static void openInternalYoutubePlayer(Activity activity) {
-        activity.startActivity(new Intent(activity, YTPlayerActivity.class));
+    public static void openInternalYoutubePlayer(Context context) {
+        try {
+            context.startActivity(new Intent(context, YTPlayerActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+        }
     }
 
-    public static void openInternalYoutubePlayer(Activity activity, boolean isDetailVisible) {
-        Intent intent = new Intent(activity, YTSlidingActivity.class);
-        intent.putExtra(YTConstant.VIDEO_DETAIL, isDetailVisible);
-        activity.startActivity(intent);
+    public static void openInternalYoutubePlayer(Context context, boolean isDetailVisible) {
+        try {
+            Intent intent = new Intent(context, YTSlidingActivity.class);
+            intent.putExtra(YTConstant.VIDEO_DETAIL, isDetailVisible);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+        }
     }
 
-    public static void openInternalYoutubeSlidingPanel(Activity activity) {
-        activity.startActivity(new Intent(activity, YTSlidingActivity.class));
+    public static void openInternalYoutubeSlidingPanel(Context context) {
+        try {
+            context.startActivity(new Intent(context, YTSlidingActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+        }
     }
 
-    public static void openInternalYoutubePlaylistPlayer(Activity activity, String playerName, ArrayList<YTVideoModel> playlist) {
-        Intent intent = new Intent(activity, YTPlaylistActivity.class);
-        intent.putExtra(YTConstant.PLAYER_NAME, playerName);
-        intent.putExtra(YTConstant.PLAYLIST, playlist);
-        activity.startActivity(intent);
+    public static void openInternalYoutubePlaylistPlayer(Context context, String playerName, ArrayList<YTVideoModel> playlist) {
+        try {
+            Intent intent = new Intent(context, YTPlaylistActivity.class);
+            intent.putExtra(YTConstant.PLAYER_NAME, playerName);
+            intent.putExtra(YTConstant.PLAYLIST, playlist);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+        }
     }
 
-    public static void openInternalYoutubeByPlaylistId(Activity activity, String playerName, String playListId) {
-        Intent intent = new Intent(activity, YTPlaylistActivity.class);
-        intent.putExtra(YTConstant.PLAYER_NAME, playerName);
-        intent.putExtra(YTConstant.PLAYLIST_ID, playListId);
-        activity.startActivity(intent);
+    public static void openInternalYoutubeByPlaylistId(Context context, String playerName, String playListId) {
+        try {
+            Intent intent = new Intent(context, YTPlaylistActivity.class);
+            intent.putExtra(YTConstant.PLAYER_NAME, playerName);
+            intent.putExtra(YTConstant.PLAYLIST_ID, playListId);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+        }
     }
 
-    public static void openInternalYoutubeByChannelId(Activity activity, String playerName, String channelId) {
-        Intent intent = new Intent(activity, YTChannelPlaylistActivity.class);
-        intent.putExtra(YTConstant.PLAYER_NAME, playerName);
-        intent.putExtra(YTConstant.CHANNEL_ID, channelId);
-        activity.startActivity(intent);
+    public static void openInternalYoutubeByChannelId(Context context, String playerName, String channelId) {
+        try {
+            Intent intent = new Intent(context, YTChannelPlaylistActivity.class);
+            intent.putExtra(YTConstant.PLAYER_NAME, playerName);
+            intent.putExtra(YTConstant.CHANNEL_ID, channelId);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+        }
+
     }
 
     /**
      * @param playerName Toolbar title name
      * @param playListIds Playlist ids in comma separated
      */
-    public static void openInternalYoutubeByPlayListMultipleIds(Activity activity, String playerName, String playListIds) {
-        Intent intent = new Intent(activity, YTChannelPlaylistActivity.class);
-        intent.putExtra(YTConstant.PLAYER_NAME, playerName);
-        intent.putExtra(YTConstant.PLAYLIST_ID, playListIds);
-        activity.startActivity(intent);
+    public static void openInternalYoutubeByPlayListMultipleIds(Context context, String playerName, String playListIds) {
+        try {
+            Intent intent = new Intent(context, YTChannelPlaylistActivity.class);
+            intent.putExtra(YTConstant.PLAYER_NAME, playerName);
+            intent.putExtra(YTConstant.PLAYLIST_ID, playListIds);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+        }
+
     }
 
-    public static void openInternalYoutubePlaylistPlayer(Activity activity, String channelId) {
-        Intent intent = new Intent(activity, YTSearchActivity.class);
-        intent.putExtra(YTConstant.CHANNEL_ID, channelId);
-        activity.startActivity(intent);
+    public static void openInternalYoutubePlaylistPlayer(Context context, String channelId) {
+        try {
+            Intent intent = new Intent(context, YTSearchActivity.class);
+            intent.putExtra(YTConstant.CHANNEL_ID, channelId);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+        }
     }
 
 
@@ -185,12 +244,12 @@ public class YTUtility {
         return time ;
     }
 
-    public static void openInternalYoutubeSubscribe(Activity activity, String youtubeChannelId) {
+    public static void openInternalYoutubeSubscribe(Context context, String youtubeChannelId) {
         // Contact Developer to update this option
         // UnComment SubscribeActivity for use working Class
-//        activity.startActivity(new Intent(activity, SubscribeActivity.class)
+//        context.startActivity(new Intent(context, SubscribeActivity.class)
 //                .putExtra(YTConstant.CHANNEL_ID, youtubeChannelId));
         // uncomment Core Library on gradle file
-        Toast.makeText(activity,"Contact Developer to update this option", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context,"Contact Developer to update this option", Toast.LENGTH_SHORT).show();
     }
 }

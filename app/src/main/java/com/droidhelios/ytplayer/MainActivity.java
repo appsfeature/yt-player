@@ -91,7 +91,7 @@ static final String YOUTUBE_MULTIPLE_PLAYLIST_IDS = "PLEI1TXdLd0MYJAKQlEihIJ1nrg
                 ytPlayer.openVideo(YOUTUBE_VIDEO_ID);
                 break;
             case R.id.btn_open_external:
-                ytPlayer.openPlaylistExternal(YOUTUBE_PLAYLIST_ID);
+                ytPlayer.openPlaylistExternal(this, YOUTUBE_PLAYLIST_ID);
                 break;
             case R.id.btn_open_subscribe:
                 ytPlayer.openSubscribeOption(YOUTUBE_CHANNEL_ID);

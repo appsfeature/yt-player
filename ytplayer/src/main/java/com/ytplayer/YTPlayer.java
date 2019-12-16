@@ -1,6 +1,7 @@
 package com.ytplayer;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Typeface;
 
 import com.ytplayer.adapter.YTVideoModel;
@@ -23,20 +24,18 @@ public class YTPlayer {
     }
 
     private static YTPlayer instance;
-    private final Activity activity;
-    private final String googleApiKey;
+    private final Context context;
     private VideoType playerType;
 
-    public YTPlayer(Activity activity, String googleApiKey) {
-        this.activity = activity;
-        this.googleApiKey = googleApiKey;
+    private YTPlayer(Context context, String googleApiKey) {
+        this.context = context;
         this.playerType = VideoType.OPEN_INTERNAL_PLAYER;
         YTConfig.setApiKey(googleApiKey);
     }
 
-    public static YTPlayer getInstance(Activity activity, String googleApiKey) {
+    public static YTPlayer getInstance(Context context, String googleApiKey) {
         if (instance == null) {
-            instance = new YTPlayer(activity, googleApiKey);
+            instance = new YTPlayer(context, googleApiKey);
         }
         return instance;
     }
@@ -52,16 +51,23 @@ public class YTPlayer {
         openVideo(videoId, false);
     }
 
+    /**
+     *  Used for In app open
+     */
     public void openVideo(String videoId, boolean isDetailVisible) {
         YTConfig.setVideoId(videoId);
         if (playerType == VideoType.OPEN_INTERNAL_PLAYER) {
-            YTUtility.openInternalYoutubePlayer(activity);
+            YTUtility.openInternalYoutubePlayer(context);
         }
         if (playerType == VideoType.OPEN_INTERNAL_SLIDING_PLAYER) {
-            YTUtility.openInternalYoutubePlayer(activity, isDetailVisible);
-        } else {
-            YTUtility.openExternalYoutubeVideoPlayer(activity, YTConfig.getApiKey(), YTConfig.getVideoId());
+            YTUtility.openInternalYoutubePlayer(context, isDetailVisible);
         }
+    }
+    /**
+     *  Used for External app open
+     */
+    public void openVideo(Activity activity, String videoId, boolean isDetailVisible) {
+        YTUtility.openExternalYoutubeVideoPlayer(activity, YTConfig.getApiKey(), YTConfig.getVideoId());
     }
 
     public Typeface getTypeface() {
@@ -83,7 +89,7 @@ public class YTPlayer {
         return this;
     }
 
-    public void openPlaylistExternal(String playlistId) {
+    public void openPlaylistExternal(Activity activity, String playlistId) {
         YTConfig.setPlaylistId(playlistId);
         YTUtility.openExternalYoutubePlaylistPlayer(activity, YTConfig.getApiKey(), YTConfig.getPlaylistId());
     }
@@ -93,11 +99,11 @@ public class YTPlayer {
     }
 
     public void openViewPlaylist(String playerName, ArrayList<YTVideoModel> playlist) {
-        YTUtility.openInternalYoutubePlaylistPlayer(activity, playerName, playlist);
+        YTUtility.openInternalYoutubePlaylistPlayer(context, playerName, playlist);
     }
 
     public void openPlaylist(String playerName, String playListId) {
-        YTUtility.openInternalYoutubeByPlaylistId(activity, playerName, playListId);
+        YTUtility.openInternalYoutubeByPlaylistId(context, playerName, playListId);
     }
 
     /**
@@ -105,19 +111,19 @@ public class YTPlayer {
      * @param playListIds Playlist ids in comma separated
      */
     public void openPlaylistMultipleIds(String playerName, String playListIds) {
-        YTUtility.openInternalYoutubeByPlayListMultipleIds(activity, playerName, playListIds);
+        YTUtility.openInternalYoutubeByPlayListMultipleIds(context, playerName, playListIds);
     }
 
     public void openChannel(String playerName, String channelId) {
-        YTUtility.openInternalYoutubeByChannelId(activity, playerName, channelId);
+        YTUtility.openInternalYoutubeByChannelId(context, playerName, channelId);
     }
 
     public void openSearch(String youtubeChannelId) {
-        YTUtility.openInternalYoutubePlaylistPlayer(activity, youtubeChannelId);
+        YTUtility.openInternalYoutubePlaylistPlayer(context, youtubeChannelId);
     }
 
     public void openSubscribeOption(String youtubeChannelId) {
-        YTUtility.openInternalYoutubeSubscribe(activity, youtubeChannelId);
+        YTUtility.openInternalYoutubeSubscribe(context, youtubeChannelId);
     }
 
 }
