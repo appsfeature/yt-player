@@ -43,8 +43,8 @@ static final String YOUTUBE_MULTIPLE_PLAYLIST_IDS = "PLEI1TXdLd0MYJAKQlEihIJ1nrg
 
         ytPlayer = YTPlayer.getInstance(this, DeveloperKey.DEVELOPER_KEY)
                 .setPlayerType(YTPlayer.VideoType.OPEN_INTERNAL_PLAYER)
-                .setTypeface(null)
-                .maxListItemsCount(Constants.MAX_RESULTS_COUNT);
+                .maxListItemsCount(Constants.MAX_RESULTS_COUNT)
+                .setTypeface(null);
 
         SwitchCompat switchCompat = findViewById(R.id.switchCompat);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
