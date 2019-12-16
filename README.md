@@ -46,33 +46,56 @@ dependencies {
 ``` 
 
 In your activity class:
-#### Usage method
+#### In App method
 ```java 
       YTPlayer ytPlayer = YTPlayer.getInstance(this, DeveloperKey.DEVELOPER_KEY)
-              .setPlayerType(YTPlayer.VideoType.OPEN_INTERNAL_PLAYER);
-              
-               // For open single video
-               ytPlayer.setPlayerType(YTPlayer.VideoType.OPEN_INTERNAL_PLAYER);
-               ytPlayer.openVideo(YOUTUBE_VIDEO_ID);
-               
-               // For open video playlist
-               ArrayList<YTVideoModel> playList = new ArrayList<>();
-               YTVideoModel videoDetail = YTVideoModel.Builder()
-                           .setVideoId("3gQym6mF2Jw")
-                           .setTitle("How to Create a VR App for Android in 7 Minutes")
-                           .setDuration("9.5");
-               playList.add(videoDetail);
-               ytPlayer.openPlaylist("Youtube", playList);
-               
-               // For open video playlist by channelId
-               ytPlayer.openPlaylist("Player Name", "UC_x5XG1OV2P6uZZ5FSM9Ttw"); 
+                .setPlayerType(YTPlayer.VideoType.OPEN_INTERNAL_PLAYER)
+                .maxListItemsCount(Constants.MAX_RESULTS_COUNT)
+                .setTypeface(null);
 
-               // For open single video in external youtube player
-               ytPlayer.setPlayerType(YTPlayer.VideoType.OPEN_EXTERNAL);
-               ytPlayer.openVideo(YOUTUBE_VIDEO_ID);
+       // For open single playlist 
+       ytPlayer.openPlaylist("Playlist", YOUTUBE_GOOGLE_PLAY_PLAYLIST_ID); 
+
+       // For open multiple playlist (YOUTUBE_MULTIPLE_PLAYLIST_IDS = Comma saperated playlist Ids)
+       ytPlayer.openPlaylistMultipleIds("Multiple Playlist", YOUTUBE_MULTIPLE_PLAYLIST_IDS);
                 
-               // For open video playlist in external youtube player
-               ytPlayer.openPlaylist(YOUTUBE_PLAYLIST);
+        // For open channel
+       ytPlayer.openChannel("Channel", YOUTUBE_CHANNEL_ID);
+                         
+       // For open single video
+       ytPlayer.setPlayerType(YTPlayer.VideoType.OPEN_INTERNAL_PLAYER);
+       ytPlayer.openVideo(YOUTUBE_VIDEO_ID);
+
+       // For open video playlist
+       ArrayList<YTVideoModel> videosList = new ArrayList<>();
+       YTVideoModel videoDetail = YTVideoModel.Builder()
+                   .setVideoId("3gQym6mF2Jw")
+                   .setTitle("How to Create a VR App for Android in 7 Minutes")
+                   .setDuration("9.5");
+       videosList.add(videoDetail);
+       ytPlayer.openViewPlaylist("Youtube", videosList);  
+       
+       // For open search video option
+       ytPlayer.setPlayerType(YTPlayer.VideoType.OPEN_INTERNAL_SLIDING_PLAYER);
+       ytPlayer.openSearch(YOUTUBE_CHANNEL_ID); 
+
+                                
+```
+
+#### External App method
+```java 
+      YTPlayer ytPlayer = YTPlayer.getInstance(this, DeveloperKey.DEVELOPER_KEY)
+                .setPlayerType(YTPlayer.VideoType.OPEN_EXTERNAL)
+                .maxListItemsCount(Constants.MAX_RESULTS_COUNT)
+                .setTypeface(null); 
+            
+       // For open video playlist in external youtube player
+       ytPlayer.openPlaylistExternal(YOUTUBE_PLAYLIST); 
+       
+       // For open single video in external youtube player
+       ytPlayer.setPlayerType(YTPlayer.VideoType.OPEN_EXTERNAL);
+       ytPlayer.openVideo(YOUTUBE_VIDEO_ID);
+
                                 
 ```
 
