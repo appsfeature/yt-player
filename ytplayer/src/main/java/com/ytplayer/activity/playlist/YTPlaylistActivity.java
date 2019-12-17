@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.slidinguppanel.SlidingUpPanelLayout;
 import com.ytplayer.R;
+import com.ytplayer.YTUtility;
 import com.ytplayer.activity.YTBaseActivity;
 import com.ytplayer.adapter.OnItemClickListener;
 import com.ytplayer.adapter.YTVideoAdapter;
@@ -55,6 +56,7 @@ public class YTPlaylistActivity extends YTBaseActivity implements YTVideoAdapter
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        YTUtility.setTranslucentColor(getWindow());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.yt_activity_youtube_playlist);
         progressbar = findViewById(R.id.progressbar);

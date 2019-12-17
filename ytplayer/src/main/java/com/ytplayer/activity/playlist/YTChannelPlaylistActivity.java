@@ -54,6 +54,7 @@ public class YTChannelPlaylistActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        YTUtility.setTranslucentColor(getWindow());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.yt_activity_channel_playlist);
         progressbar = findViewById(R.id.progressbar);

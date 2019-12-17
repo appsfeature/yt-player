@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="actionBarColor">@color/colorPrimary</color>
+    <color name="statusBarColor">@color/colorPrimaryDark</color>
 
     <color name="placeholder_grey">@color/themeHintColor</color>
     <color name="placeholder_grey_20">@color/themeDividerColorDark</color>

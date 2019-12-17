@@ -3,12 +3,17 @@ package com.ytplayer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
 import com.ytplayer.activity.playlist.YTChannelPlaylistActivity;
@@ -252,4 +257,16 @@ public class YTUtility {
         // uncomment Core Library on gradle file
         Toast.makeText(context,"Contact Developer to update this option", Toast.LENGTH_SHORT).show();
     }
+
+    public static void  setTranslucentColor(Window window) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(ContextCompat.getColor(window.getContext(),R.color.statusBarColor));
+                window.setNavigationBarColor(Color.BLACK);
+            }
+
+        }
+    }
+
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#343436</color>
-    <color name="colorPrimaryDark">#272729</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">@color/themeWindowBackground</color>
+    <color name="colorPrimaryDark">#B4B4B4</color>
+    <color name="colorAccent">#34C276</color>
 
     <!--App Default Theme Colors-->
     <color name="themeEditTextShapeColor">#D6D5D5</color>
