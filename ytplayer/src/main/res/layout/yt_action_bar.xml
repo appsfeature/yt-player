@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         app:titleTextColor="@android:color/white"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/actionBarColor"
+        android:background="@color/ytActionBarColor"
         app:navigationIcon="?attr/homeAsUpIndicator"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 

@@ -5,8 +5,8 @@
     <color name="colorPrimaryDark">#272729</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="actionBarColor">@color/colorPrimary</color>
-    <color name="statusBarColor">@color/colorPrimaryDark</color>
+    <color name="ytActionBarColor">@color/colorPrimary</color>
+    <color name="ytStatusBarColor">@color/colorPrimaryDark</color>
 
     <!--App Default Theme Colors-->
     <color name="themePlaceHolderBackgroundCardColor">#4C4C4D</color>

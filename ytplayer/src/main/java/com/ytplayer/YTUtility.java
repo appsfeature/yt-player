@@ -262,7 +262,7 @@ public class YTUtility {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(ContextCompat.getColor(window.getContext(),R.color.statusBarColor));
+                window.setStatusBarColor(ContextCompat.getColor(window.getContext(),R.color.ytStatusBarColor));
                 window.setNavigationBarColor(Color.BLACK);
             }
 
