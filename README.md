@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.github.appsfeature:yt-player:X.Y'
 } 
 ```
-Note: Replace `X.Y` with lastest version number: [![Download](https://jitpack.io/v/appsfeature/yt-player.svg)](https://jitpack.io/#appsfeature/yt-player)
+####Note: Replace `X.Y` with lastest version number: [![Download](https://jitpack.io/v/appsfeature/yt-player.svg)](https://jitpack.io/#appsfeature/yt-player)
 
 ## Setup Google Developers Console
 ```
