@@ -34,13 +34,14 @@ Add this to your project build.gradle
 
 Module-level build.gradle (<module>/build.gradle): 
 
-#### [![](https://jitpack.io/v/appsfeature/yt-player.svg)](https://jitpack.io/#appsfeature/yt-player)
+#### [![Download](https://jitpack.io/v/appsfeature/yt-player.svg)](https://jitpack.io/#appsfeature/yt-player)
 ```gradle  
 
 dependencies {
-    implementation 'com.github.appsfeature:yt-player:x.y'
+    implementation 'com.github.appsfeature:yt-player:X.Y'
 } 
 ```
+Note: Replace `X.Y` with lastest version number: [![Download](https://jitpack.io/v/appsfeature/yt-player.svg)](https://jitpack.io/#appsfeature/yt-player)
 
 ## Setup Google Developers Console
 ```
